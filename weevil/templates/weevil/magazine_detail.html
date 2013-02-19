@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load url from future %}
+
+{% block maincontent %}
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+<tr>
+    <td class="sectiontableheader" align="right" width="5%">#</td>
+    <td class="sectiontableheader"><a href="javascript:tableOrdering('a.title','desc','');" title="Click to sort by this column">Article Title</a></td>
+    <td class="sectiontableheader" width="20%"><a href="javascript:tableOrdering('author','desc','');" title="Click to sort by this column">Author</a></td>
+</tr>
+{% for article in magazine.article_set.all %}
+<tr class="sectiontableentry{% cycle 1 2 %}">
+    <td align="right">1</td>
+    <td><a href="{% url 'article' magazine.issue_number article.slug %}">{{ article.title }}</a></td>
+    <td>
+    {% if article.author %}
+        <a href="{% url 'contributor' article.author.slug %}">{{article.author.name}}</a>
+    {% endif %}
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}
+
+{% block leftcolumn %}
+{% include 'weevil/magazine_leftcolumn.html' %}
+{% endblock %}

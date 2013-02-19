@@ -9,9 +9,10 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('weevil.views',
-    # Examples:
     url(r'^$', 'home', name='home'),
-    # url(r'^weevil/', include('weevil.foo.urls')),
+    url(r'^issue(\d+)$', 'magazine', name='magazine'),
+    url(r'^issue(\d+)/([-\w\d]+)$', 'article', name='article'),
+    url(r'^contributor/([-\w\d]+)$', 'contributor', name='contributor'),
 )
 
 urlpatterns += patterns('django.contrib.flatpages.views',

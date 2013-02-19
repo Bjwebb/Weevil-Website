@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load url from future %}
+
+{% block maincontent %}
+<table class="contentpaneopen"><tr><td>
+
+<h2>{{article.title}}</h2>
+
+</td></tr><tr><td>
+
+<span class="small">
+    Written by
+    <a href="{% url 'contributor' article.author.slug %}">{{article.author.name}}</a>
+</span>
+
+</td></tr><tr><td>
+
+{{article.text|safe}}
+
+</tr></td></table>
+{% endblock %}
+
+{% block leftcolumn %}
+{% include 'weevil/magazine_leftcolumn.html' with magazine=article.magazine %}
+{% endblock %}

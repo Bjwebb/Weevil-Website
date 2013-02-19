@@ -1,21 +1,13 @@
 {% extends "base.html" %}
 {% load url from future %}
 
-{% block extrahead %}
-{% if flatpage.url == '/' %}
-<link rel="openid.server" href="http://bjwebb.co.uk/openid/">
-<link rel="openid2.provider" href="http://bjwebb.co.uk/openid/">
-
-<link rel="openid2.local_id" href="http://bjwebb.co.uk/openid/bjwebb/">
-<link rel="openid.delegate" href="http://bjwebb.co.uk/openid/bjwebb/">
-{% endif %}
-{% endblock %}
-
 {% block maincontent %}
 
 <table class="contentpaneopen"><tr><td>
 
 <h2>{{ flatpage.title }} </h2>
+
+</td></tr><tr><td>
 
 {{ flatpage.content}}
 

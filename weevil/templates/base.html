@@ -41,25 +41,19 @@ $.event.special.hover.speed = 100;
 			<div class="clr"></div>
             <div id="dropmenu">
                 <ul class="sf-menu sf-horizontal">
-<li id="current" class="first-child active item1"><a href=""><span>Home</span></a></li>
+<li id="current" class="first-child active item1"><a href="{% url 'home' %}"><span>Home</span></a></li>
 <li><a href=""><span>News</span></a></li>
 <li class="parent"><a href=""><span>The Team</span></a><ul>
 <li class="first-child"><a href=""><span>Writers</span></a></li>
 <li class="last-child"><a href=""><span>Illustrators</span></a></li></ul></li>
 <li class="parent"><a href=""><span>The Magazine</span></a><ul>
-<li class="first-child"><a href=""><span>Weevil #13</span></a></li>
-<li><a href=""><span>Weevil #12</span></a></li>
-<li><a href=""><span>Weevil #11</span></a></li>
-<li><a href=""><span>Weevil #10</span></a></li>
-<li><a href=""><span>Weevil #9</span></a></li>
-<li><a href=""><span>Weevil #8</span></a></li>
-<li><a href=""><span>Weevil #7</span></a></li>
-<li><a href=""><span>Weevil #6</span></a></li>
-<li><a href=""><span>Weevil #5</span></a></li>
-<li><a href=""><span>Weevil #4</span></a></li>
-<li><a href=""><span>Weevil #3</span></a></li>
-<li><a href=""><span>Weevil #2</span></a></li>
-<li class="last-child"><a href=""><span>Weevil #1</span></a></li></ul></li>
+{% for weevil in weevils %}
+{% if forloop.first %}<li class="first-child">
+{% elif forloop.last %}<li class="last-child">
+{% else %}<li>{% endif %}
+<a href="{% url 'magazine' weevil.issue_number %}"><span>{{weevil}}</span></a></li>
+{% endfor %}
+</ul></li>
 <li class="parent"><a href="/commitee/"><span>Committee Info</span></a><ul>
 <li class="first-child"><a href=""><span>Current Committee</span></a></li>
 <li><a href=""><span>Previous Committees</span></a></li>
@@ -93,9 +87,8 @@ $.event.special.hover.speed = 100;
 					<div class="content_t">
 
 			<div id="leftcolumn">
-				<jdoc:include type="modules" name="left" style="rounded" />
-				<br />
-				<!-- TMP $sg = 'banner'; include "templates.php"; -->
+                {% block leftcolumn %}
+                {% endblock %}
 				<br />
 			</div>
 

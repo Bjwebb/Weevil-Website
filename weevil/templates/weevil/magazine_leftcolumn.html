@@ -1,0 +1,18 @@
+<div class="catart">
+<ul class="catart">
+{% for weevil in weevils %}
+    {% ifequal weevil magazine %}
+    <li class="catart_ha">
+        <a href="{% url 'magazine' weevil.issue_number %}" class="catart_ha">{{weevil}}</a></li>
+        {% for article in magazine.article_set.all %}
+        <li class="catart_n">
+            <a href="{% url 'article' magazine.issue_number article.slug %}" class="catart_n">{{article.title}}</a></li>
+        {% endfor %}
+    {% else %}
+    <li class="catart_h">
+        <a href="{% url 'magazine' weevil.issue_number %}" class="catart_h">{{weevil}}</a></li>
+    {% endifequal %}
+    </li>
+{% endfor %}
+</ul>
+</div>
