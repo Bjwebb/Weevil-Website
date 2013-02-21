@@ -4,8 +4,10 @@ from weevil.models import Magazine, Article, Contributor
 class HomeView(TemplateView):
     template_name = 'home.html'
     def get_context_data(self):
-        
-        return {}
+        return {
+            'magazines': Magazine.objects.all(),
+            'random_articles': Article.objects.order_by('?')[0:6],
+        }
 
 class MagazineView(DetailView):
     def get_object(self):

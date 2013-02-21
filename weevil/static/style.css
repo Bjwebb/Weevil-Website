@@ -102,7 +102,7 @@ input.button, .validate  {
 /*****************************************/
 
 #page_bg {
-	background: #e6e7e8 url(/static/images/page_bg.png) repeat-x top center;
+	background: #e6e7e8 url(images/page_bg.png) repeat-x top center;
 }
 
 #wrapper {
@@ -116,7 +116,7 @@ input.button, .validate  {
 	padding:0 10px 0 0;
 	width:950px;
 	height:344px;
-	background: transparent url(/static/images/headerimg.jpg) no-repeat bottom center;
+	background: transparent url(images/headerimg.jpg) no-repeat bottom center;
 }
 
 #pillmenu {
@@ -125,7 +125,7 @@ input.button, .validate  {
 	padding:0 0 0 0;
 	margin:0;
 	overflow:hidden;
-	/*background: transparent url(/static/images/t_menu_bg.gif) no-repeat top center;*/
+	/*background: transparent url(images/t_menu_bg.gif) no-repeat top center;*/
 }
 
 #pillmenu ul {
@@ -138,7 +138,7 @@ input.button, .validate  {
 #pillmenu li {
 	float: left;
 	padding:0 1px 0 0;
-/*	background: transparent url(/static/images/t_menu_divider.gif) no-repeat center right;*/
+/*	background: transparent url(images/t_menu_divider.gif) no-repeat center right;*/
 }
 
 #pillmenu li a {
@@ -171,7 +171,7 @@ input.button, .validate  {
 	padding:26px 0 0 0;
 	margin:0;
 	overflow:hidden;
-	background: transparent url(/static/images/t_menu_bg.gif) no-repeat bottom right;
+	background: transparent url(images/t_menu_bg.gif) no-repeat bottom right;
 }
 
 #pillmenu ul {
@@ -184,7 +184,7 @@ input.button, .validate  {
 #pillmenu li {
 	float: left;
 	padding:0 1px 0 0;
-	background: transparent url(/static/images/t_menu_divider.gif) no-repeat center right;
+	background: transparent url(images/t_menu_divider.gif) no-repeat center right;
 }
 
 #pillmenu li a {
@@ -210,7 +210,7 @@ input.button, .validate  {
 }
 
 #pillmenu li:first-child a:hover ,#pillmenu li:first-child a#active_menu-nav {
-	background: #555 url(/static/images/first.gif) no-repeat top left;
+	background: #555 url(images/first.gif) no-repeat top left;
 }*/
 
 .logo {
@@ -255,7 +255,7 @@ input.button, .validate  {
 	width:186px;
 	margin:32px 10px 32px 0;
 	padding:10px ;
-	/*background: transparent url(/static/images/news_bg.gif) no-repeat top right;*/
+	/*background: transparent url(images/news_bg.gif) no-repeat top right;*/
 }
 
 .newsflash h3 {
@@ -326,7 +326,7 @@ input.button, .validate  {
 	height:25px;
 	width:203px;
 	padding:0 0 0 10px;
-	background: transparent url(/static/images/inputbox.png) no-repeat top right;
+	background: transparent url(images/inputbox.png) no-repeat top right;
 }
 
 .search .inputbox {
@@ -351,12 +351,12 @@ input.button, .validate  {
 	font-size:0;
 	line-height:0;
 	padding:0;
-	background: transparent url(/static/images/search_btn.png) no-repeat top right;
+	background: transparent url(images/search_btn.png) no-repeat top right;
 }
 
 .search .button:hover {
 	color:white;
-	background: transparent url(/static/images/search_btn.png) no-repeat top right;
+	background: transparent url(images/search_btn.png) no-repeat top right;
 }
 
 .cpathway {
@@ -401,29 +401,29 @@ span.breadcrumbs.pathway a.pathway:hover {
 }
 
 .content_m {
-	background: transparent url(/static/images/content_m.gif) repeat-y top center;
+	background: transparent url(images/content_m.gif) repeat-y top center;
 }
 
 .content_m_l {
-	background: transparent url(/static/images/content_m_l.gif) repeat-y top center;
+	background: transparent url(images/content_m_l.gif) repeat-y top center;
 }
 
 .content_m_r {
-	background: transparent url(/static/images/content_m_r.gif) repeat-y top center;
+	background: transparent url(images/content_m_r.gif) repeat-y top center;
 }
 
 .content_full {
-	background: transparent url(/static/images/content_m_full.gif) repeat-y top center;
+	background: transparent url(images/content_m_full.gif) repeat-y top center;
 }
 
 .content_t{
 	padding:10px 0 0 0;
-	background: transparent url(/static/images/content_t.gif) no-repeat top center;
+	background: transparent url(images/content_t.gif) no-repeat top center;
 }
 
 .content_b{
 	padding:0 0 20px;
-	background: transparent url(/static/images/content_b.gif) no-repeat bottom center;
+	background: transparent url(images/content_b.gif) no-repeat bottom center;
 }
 
 #leftcolumn, #rightcolumn {
@@ -515,7 +515,7 @@ a.footer123:link, a.footer123:visited {
 	text-decoration: none;
 }
 .f123_bg {
-	background:url(/static/images/123_bg.png);
+	background:url(images/123_bg.png);
 	width:134px;
 	height:30px;
 	text-align:center;
@@ -914,7 +914,7 @@ div.module_menu ul li a:link, div.module_menu ul li a:visited {
 	padding: 2px 0;
 	line-height: 24px;
 	color:#888;
-	background: transparent url(/static/images/blue/bullet2.jpg) top left no-repeat;
+	background: transparent url(images/blue/bullet2.jpg) top left no-repeat;
 }
 
 #leftcolumn div.module table ,#rightcolumn div.module table {
@@ -954,11 +954,11 @@ div.module_menu ul li a:link, div.module_menu ul li a:visited {
 	text-transform:none;
 	font-weight: 700;
 	overflow:hidden;
-	background: transparent url(/static/images/box_h3.png) no-repeat top left;
+	background: transparent url(images/box_h3.png) no-repeat top left;
 }
 
 #rightcolumn h3 {
-	background: transparent url(/static/images/box_h3_r.png) no-repeat top right;
+	background: transparent url(images/box_h3_r.png) no-repeat top right;
 }
 
 .moduletable_menu, .moduletable, .moduletable_text {
@@ -985,13 +985,13 @@ div.module_menu ul li a:link, div.module_menu ul li a:visited {
 	margin:0;
 	text-decoration: none;
 	color: #000;
-	background: transparent url(/static/images/menu_arrow.gif) no-repeat left top;
+	background: transparent url(images/menu_arrow.gif) no-repeat left top;
 }
 
 
 #leftcolumn ul.menu li a:hover, #rightcolumn ul.menu li a:hover {
 	color: #dd3f2f;
-	background: transparent url(/static/images/menu_arrow_hover.gif) no-repeat left top;
+	background: transparent url(images/menu_arrow_hover.gif) no-repeat left top;
 }
 
 /*LEFT COL CURRENT LINK*/
@@ -1003,7 +1003,7 @@ div.module_menu ul li a:link, div.module_menu ul li a:visited {
 #rightcolumn ul.menu li#current a, #rightcolumn ul.menu li#current a:link {
 	color: #dd3f2f;
 	padding:0 0 0 14px;
-	background: transparent url(/static/images/menu_arrow_hover.gif) no-repeat left top;
+	background: transparent url(images/menu_arrow_hover.gif) no-repeat left top;
 }
 
 #leftcolumn ul.menu li#current a:hover, #rightcolumn ul.menu li#current a:hover {
@@ -1028,7 +1028,7 @@ div.module_menu ul li a:link, div.module_menu ul li a:visited {
 
 #leftcolumn ul.menu li#current ul li a:hover, #rightcolumn ul.menu li#current ul li a:hover {
 	color: #dd3f2f;
-	background: transparent url(/static/images/menu_arrow_hover.gif) no-repeat left top;
+	background: transparent url(images/menu_arrow_hover.gif) no-repeat left top;
 }
 
 #leftcolumn ul.menu li ul li#current, #rightcolumn ul.menu li ul li#current {
@@ -1051,7 +1051,7 @@ div.module_menu ul li a:link, div.module_menu ul li a:visited {
 #leftcolumn ul.menu li.parent ul li a:hover {
 	color: #dd3f2f;
 	background: none;
-	background: transparent url(/static/images/menu_arrow_hover.gif) no-repeat left top;
+	background: transparent url(images/menu_arrow_hover.gif) no-repeat left top;
 }
 
 /*SUBMENU POSITION*/
@@ -1264,7 +1264,7 @@ td.key {
 	margin-top: -15px;
 	padding-top: 15px;
 	padding-bottom: 5px;
-	background: url(/static/../system/images/selector-arrow.png) no-repeat;
+	background: url(../system/images/selector-arrow.png) no-repeat;
 }
 
 .tool-text {
@@ -1338,7 +1338,7 @@ float:left;
 }
 
 .catart { display:table; font: 12px Arial, Helvetica, sans-serif; list-style-type: none; text-align:left; padding: 0px; margin: 0px; }
-li.catart_h, li.catart_ha {  width:180px;	padding:5px 0 6px 25px;	margin-top:5px; height:14px; font-size:14px; background: transparent url(/static/images/box_h3.png) no-repeat top left;}
+li.catart_h, li.catart_ha {  width:180px;	padding:5px 0 6px 25px;	margin-top:5px; height:14px; font-size:14px; background: transparent url(images/box_h3.png) no-repeat top left;}
 li.catart_n, li.catart_na, li.catart_n_special, li.catart_na_special, li.catart_n_beginningofspecial, li.catart_na_beginningofspecial{ margin-left:2px; padding: 7px 14px 7px 30px; border-top-style:dotted; border-width:thin; border-color:#999999;}
 li:hover.catart_n, li:hover.catart_na, li:hover.catart_n_special, li:hover.catart_na_special, li:hover.catart_n_beginningofspecial, li:hover.catart_na_beginningofspecial { font-weight: bold; background-color:#ddffdd;}
 
@@ -1357,16 +1357,16 @@ a:hover.catart_h, a:hover.catart_ha {  color: #e4ffe4; }
 a:hover.catart_n, a:hover.catart_na, a:hover.catart_n_special, a:hover.catart_na_special, a:hover.catart_n_beginningofspecial, a:hover.catart_na_beginningofspecial {  font-weight: bold; }
 
 
-/*.catart_h a { background-image: url(/static/images/recnormal.jpg);  }
-.catart_h a:hover { background-image: url(/static/images/recselected.jpg); color: #660000; }
-.catart_ha a { background-image: url(/static/images/recselected.jpg);  }
-.catart_ha a:hover { background-image: url(/static/images/recselected.jpg); }
-.catart_n a { background-image: url(/static/images/arrnormal.jpg);  }
-.catart_n a:hover { background-image: url(/static/images/arrselected.jpg); }
-.catart_na a { background-image: url(/static/images/arrselected.jpg);  }
-.catart_na a:hover { background-image: url(/static/images/arrselected.jpg);}*/
+/*.catart_h a { background-image: url(images/recnormal.jpg);  }
+.catart_h a:hover { background-image: url(images/recselected.jpg); color: #660000; }
+.catart_ha a { background-image: url(images/recselected.jpg);  }
+.catart_ha a:hover { background-image: url(images/recselected.jpg); }
+.catart_n a { background-image: url(images/arrnormal.jpg);  }
+.catart_n a:hover { background-image: url(images/arrselected.jpg); }
+.catart_na a { background-image: url(images/arrselected.jpg);  }
+.catart_na a:hover { background-image: url(images/arrselected.jpg);}*/
 
-.ezine_box {height:22px; width:257px; background-image: url(/static/images/ezine.jpg); padding: 19px 6px 19px 87px; }
+.ezine_box {height:22px; width:257px; background-image: url(images/ezine.jpg); padding: 19px 6px 19px 87px; }
 
 .modulelatestnews {text-align:left;  }
 .modulelatestnews li {padding:0 10px 5px 10px; list-style-type:none;}
@@ -1378,7 +1378,7 @@ ul.menucommitteemenu li {  width:180px;
 	margin-top:5px;
 	height:14px;
 	font-size:14px;
-	background: transparent url(/static/images/box_h3.png) no-repeat top left;}
+	background: transparent url(images/box_h3.png) no-repeat top left;}
 ul.menucommitteemenu a {text-decoration: none;  font-weight:900; color: #fff;}
 ul.menucommitteemenu a:hover {  color: #e4ffe4; }
 
