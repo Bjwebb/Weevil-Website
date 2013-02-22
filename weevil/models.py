@@ -14,6 +14,9 @@ class Contributor(models.Model):
     slug = models.SlugField()
     text = models.TextField(default='')
 
+    def __unicode__(self):
+        return self.name
+
 class Article(models.Model):
     title = models.CharField(max_length=255, default='')
     slug = models.SlugField(max_length=100)
