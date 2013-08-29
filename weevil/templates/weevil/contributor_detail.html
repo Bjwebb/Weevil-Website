@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'contributors.html' %}
 {% load url from future %}
 
 {% block maincontent %}
@@ -11,10 +11,4 @@
 {{contributor.text|safe}}
 
 </tr></td></table>
-{% endblock %}
-
-{% block leftcolumn %}
-{% comment %}
-{% include 'weevil/contributor_leftcolumn.html' %}
-{% endcomment %}
 {% endblock %}

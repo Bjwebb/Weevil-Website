@@ -29,3 +29,8 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 
+class News(models.Model):
+    title = models.CharField(max_length=255, default='')
+    slug = models.SlugField(max_length=100)
+    text = models.TextField(default='')
+

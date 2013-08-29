@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load url from future %}
+
+{% block maincontent %}
+<div class="componentheading">
+	Contributors</div>
+<p class="MsoNormal">An epic endeavour such as Weevil would never be possible without the people behind the content. Their sleepless nights, caffeine-induced writing genius and fanatical persistence are what makes this magazine happen with unwavering regularity.</p>
+<p class="MsoNormal"><span lang="EN-GB">With this in mind, we've given them a prime spot on our website, giving you the opportunity to get to know our wordsmiths and artists. </span></p>
+<p class="MsoNormal"><span lang="EN-GB">Found a writer you really like? Click on their name and explore their complete Weevil works!<br /></span></p>
+{% endblock %}
+
+{% block leftcolumn %}
+<div class="catart">
+<ul class="catart">
+    {% if illustrators %}
+    <li class="catart_ha">
+        <a href="{% url 'contributors' %}/illustrators" class="catart_ha">Illustrators</a></li>
+        {% for contributor in illustrators %}
+        <li class="catart_n">
+            <a href="{% url 'contributor' contributor.slug %}" class="catart_n">{{contributor.name}}</a></li>
+        {% endfor %}
+    {% else %}
+    <li class="catart_h">
+        <a href="{% url 'contributors' %}/illustrators" class="catart_h">Illustrators</a></li>
+    </li>
+    {% endif %}
+
+    {% if writers %}
+    <li class="catart_ha">
+        <a href="{% url 'contributors' %}/writers" class="catart_ha">Writers</a></li>
+        {% for contributor in writers %}
+        <li class="catart_n">
+            <a href="{% url 'contributor' contributor.slug %}" class="catart_n">{{contributor.name}}</a></li>
+        {% endfor %}
+    {% else %}
+    <li class="catart_h">
+        <a href="{% url 'contributors' %}/writers" class="catart_h">Writers</a></li>
+    </li>
+    {% endif %}
+</ul>
+</div>
+{% endblock %}

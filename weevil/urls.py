@@ -12,7 +12,11 @@ urlpatterns += patterns('weevil.views',
     url(r'^$', 'home', name='home'),
     url(r'^issue(\d+)$', 'magazine', name='magazine'),
     url(r'^issue(\d+)/([-\w\d]+)$', 'article', name='article'),
-    url(r'^contributor/([-\w\d]+)$', 'contributor', name='contributor'),
+    url(r'^contributors$', 'contributors', name='contributors'),
+    url(r'^contributors/(writers|illustrators)$', 'contributors', name='contributors'),
+    url(r'^contributors/([-\w\d]+)$', 'contributor', name='contributor'),
+    url(r'^news$', 'news', name='news'),
+    url(r'^news/([-\w\d]+)$', 'news_article', name='news_article'),
 )
 
 urlpatterns += patterns('django.contrib.flatpages.views',
