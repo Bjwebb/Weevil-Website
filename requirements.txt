@@ -1,0 +1,10 @@
+django>=1.4
+django-flatcontent
+django-axes
+psycopg2
+south
+dj-database-url
+gunicorn
+dj-static
+
+

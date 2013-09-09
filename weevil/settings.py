@@ -1,5 +1,8 @@
 # Django settings for bjwebb project.
-import config
+try:
+    import config
+except ImportError: 
+    import heroku_config as config
 
 #RECAPTCHA_PUBLIC_KEY = config.RECAPTCHA_PUBLIC_KEY
 #RECAPTCHA_PRIVATE_KEY = config.RECAPTCHA_PRIVATE_KEY
@@ -53,13 +56,13 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = config.ABSPATH + '/static/'
+STATIC_ROOT = 'staticfiles'
 
 #STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/weevil/static/'
+STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -169,7 +172,7 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['null'],
+            'handlers': ['console'],
             'propagate': True,
             'level': 'INFO',
         },
@@ -180,3 +183,7 @@ LOGGING = {
         }
     }
 }
+
+
+ALLOWED_HOSTS = config.ALLOWED_HOSTS
+
