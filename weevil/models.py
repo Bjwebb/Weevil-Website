@@ -33,4 +33,14 @@ class News(models.Model):
     title = models.CharField(max_length=255, default='')
     slug = models.SlugField(max_length=100)
     text = models.TextField(default='')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+class Committee(models.Model):
+    year = models.IntegerField()
+    text = models.TextField(default='')
+
+    def __unicode__(self):
+        return unicode(self.year)
+
 

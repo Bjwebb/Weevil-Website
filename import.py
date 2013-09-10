@@ -1,13 +1,16 @@
 from django.core.management import setup_environ
 import weevil.settings
 setup_environ(weevil.settings)
-from weevil.models import Magazine, Article, Contributor
+from weevil.models import Magazine, Article, Contributor, Committee
+from django.contrib.flatpages.models import FlatPage
 
 import MySQLdb, getpass, re
 
 Magazine.objects.all().delete()
 Article.objects.all().delete()
 Contributor.objects.all().delete()
+Committee.objects.all().delete()
+FlatPage.objects.all().delete()
 
 cat = {
     44: 1,
@@ -25,14 +28,51 @@ cat = {
     57: 13
 }
 
-weevils = {}
-for i in range(1,14):
-    weevil = Magazine(issue_number=i)
-    weevils[i] = weevil
-    weevil.save()
+flat = {
+    169: '/committee/getting-involved/', 
+    272: '/committee/constitution/',
+    # /committee/contact/
+    177: '/supporters/',
+    178: '/supporters/cusu-reprographics/'
+}
 
-conn = MySQLdb.connect(host='127.0.0.1', user='weevil', passwd=getpass.getpass(), db='weevil') 
+committees = {
+    168: 2013,
+    392: 2012,
+    274: 2011
+}
+
+def fixtext(text):
+    return re.sub('"/?images/', '"http://www.weevilmagazine.co.uk/images/', text.decode('latin-1'))
+
+conn = MySQLdb.connect(host='127.0.0.1', user='root', passwd=getpass.getpass(), db='weevil') 
 c = conn.cursor()
+
+for id_, year in committees.items():
+    c.execute('SELECT introtext FROM jos_content WHERE id={0}'.format(id_))
+    for row in c:
+        committee = Committee(year=year)
+        committee.text = fixtext(row[0])
+        committee.save()
+
+for id_, url in flat.items():
+    c.execute('SELECT introtext FROM jos_content WHERE id={0}'.format(id_))
+    for row in c:
+        flatpage = FlatPage(url=url)
+        flatpage.content = fixtext(row[0])
+        flatpage.save()
+        flatpage.sites.add(1)
+
+weevils = {}
+c.execute('SELECT id,description FROM jos_categories WHERE section=9;')
+for row in c:
+    if row[0] in cat:
+        i = cat[row[0]]
+        weevil = Magazine(issue_number=i)
+        weevil.text = fixtext(row[1])
+        weevils[i] = weevil
+        weevil.save()
+
 c.execute('SELECT catid, alias, title, introtext FROM jos_content WHERE sectionid=6 AND state=1')
 for row in c:
     name = row[2].decode('latin-1')
@@ -46,7 +86,7 @@ created_re = re.compile('{ga=([^,&]*)(,?([^&,]*)&t)?}')
 for row in c:
     if row[0] in cat:
         try:
-            text = row[3].decode('latin-1')
+            text = fixtext(row[3])
             title = row[2].decode('latin-1')
         except UnicodeDecodeError:
             print row[3]

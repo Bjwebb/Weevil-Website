@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block maincontent %}
+
+<table class="contentpaneopen"><tr><td>
+
+<h2>Committee - {{ committee.year }} </h2>
+
+</td></tr><tr><td>
+
+{{ committee.text|safe }}
+
+</tr></td></table>
+
+{% endblock %}
+

@@ -1,5 +1,6 @@
 from django.views.generic import DetailView, ListView, TemplateView
-from weevil.models import Magazine, Article, Contributor, News
+from weevil.models import Magazine, Article, Contributor, News, Committee
+from django.db.models import Count 
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -31,8 +32,17 @@ class ContributorsView(TemplateView):
     def get_context_data(self):
         c = {}
         if len(self.args) > 0:
-            c[self.args[0]] = Contributor.objects.all()
+            contype = self.args[0]
+            if contype == 'writers':
+                c[contype] = Contributor.objects.annotate(Count('articles_written')).filter(articles_written__count__gt=0)
+            elif contype == 'illustrators':
+                c[contype] = Contributor.objects.annotate(Count('articles_illustrated')).filter(articles_illustrated__count__gt=0)
         return c
+
+class CommitteeView(DetailView):
+    model = Committee
+    def get_object(self):
+        return self.model.objects.get(year=self.args[0])
 
 home = HomeView.as_view()
 magazine = MagazineView.as_view()
@@ -41,4 +51,5 @@ contributors = ContributorsView.as_view()
 contributor = SlugView.as_view(model=Contributor)
 news = ListView.as_view(model=News)
 news_article = SlugView.as_view(model=News)
+committee = CommitteeView.as_view()
 
