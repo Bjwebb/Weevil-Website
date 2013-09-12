@@ -16,7 +16,7 @@ urlpatterns += patterns('weevil.views',
     url(r'^contributors/(writers|illustrators)$', 'contributors', name='contributors'),
     url(r'^contributors/([-\w\d]+)$', 'contributor', name='contributor'),
     url(r'^news$', 'news', name='news'),
-    url(r'^news/([-\w\d]+)$', 'news_article', name='news_article'),
+    #url(r'^news/([-\w\d]+)$', 'news_article', name='news_article'),
     url(r'^committee/([\d]+)$', 'committee', name='committee'),
     # TMP
     url('^committee/$', RedirectView.as_view(url='/committee/2013', permanent=False)),

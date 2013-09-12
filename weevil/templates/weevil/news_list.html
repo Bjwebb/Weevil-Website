@@ -8,6 +8,7 @@
     <tr>
         <td valign="top">
             <div>
+                <a id="{{article.slug}}"></a>
                 <table class="contentpaneopen">
                     <tr>
                         <td class="contentheading" width="100%">
@@ -28,7 +29,7 @@
 
                     <tr>
                         <td valign="top" colspan="2" class="createdate">
-                            Friday, 26 April 2013 18:44
+                            {{article.created|date:"l, j F Y H:i"}}
                         </td>
                     </tr>
 
@@ -41,7 +42,7 @@
 
                     <tr>
                         <td colspan="2"  class="modifydate">
-                            Last Updated on Friday, 26 April 2013 18:48
+                            Last Updated on {{article.updated|date:"l, j F Y H:i"}}
                         </td>
                     </tr>
                 </table>
@@ -60,7 +61,7 @@
         <a href="{% url 'news' %}" class="catart_ha">Latest</a></li>
         {% for object in object_list %}
         <li class="catart_n">
-            <a href="{% url 'news_article' object.slug %}" class="catart_n">{{object.title}}</a></li>
+            <a href="{%comment%}{% url 'news_article' object.slug %}{%endcomment%}#{{object.slug}}" class="catart_n">{{object.title}}</a></li>
         {% endfor %}
 
 </ul>

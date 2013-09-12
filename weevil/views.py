@@ -50,6 +50,6 @@ article = ArticleView.as_view()
 contributors = ContributorsView.as_view()
 contributor = SlugView.as_view(model=Contributor)
 news = ListView.as_view(model=News)
-news_article = SlugView.as_view(model=News)
+#news_article = SlugView.as_view(model=News)
 committee = CommitteeView.as_view()
 
