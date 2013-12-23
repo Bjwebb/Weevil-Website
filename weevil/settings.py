@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     #'django_openid_auth',
     'flatcontent',
     #'taggit',
+    'adminsortable',
     'axes',
     #'recaptcha_comments',
     #'captcha',

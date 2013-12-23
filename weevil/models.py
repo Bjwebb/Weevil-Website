@@ -1,6 +1,8 @@
 from django.db import models
+from adminsortable.models import Sortable
+from adminsortable.fields import SortableForeignKey
 
-class Magazine(models.Model):
+class Magazine(Sortable):
     issue_number = models.IntegerField()
     text = models.TextField(default='')
     
@@ -17,14 +19,16 @@ class Contributor(models.Model):
     def __unicode__(self):
         return self.name
 
-class Article(models.Model):
+class Article(Sortable):
+    class Meta(Sortable.Meta):
+        pass
     title = models.CharField(max_length=255, default='')
     slug = models.SlugField(max_length=100)
     text = models.TextField(default='')
     author = models.ForeignKey(Contributor, related_name='articles_written', null=True, blank=True)
     illustrator = models.ForeignKey(Contributor, related_name='articles_illustrated', null=True, blank=True)
     
-    magazine = models.ForeignKey(Magazine)
+    magazine = SortableForeignKey(Magazine)
 
     def __unicode__(self):
         return self.title
