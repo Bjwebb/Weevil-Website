@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 
 urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -24,6 +24,13 @@ urlpatterns += patterns('weevil.views',
     url('^committee/previous', RedirectView.as_view(url='/committee/2011', permanent=False)),
 )
 
+import settings
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^404/$', TemplateView.as_view(template_name='404.html')),
+    )
+
 urlpatterns += patterns('django.contrib.flatpages.views',
     url('^(.*/)$', 'flatpage', name='flatpage'),
 )
+

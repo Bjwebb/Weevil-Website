@@ -1,6 +1,7 @@
 from django.views.generic import DetailView, ListView, TemplateView
 from weevil.models import Magazine, Article, Contributor, News, Committee
 from django.db.models import Count 
+from django.http import Http404
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -12,20 +13,29 @@ class HomeView(TemplateView):
 
 class MagazineView(DetailView):
     def get_object(self):
-        return Magazine.objects.get(
-            issue_number=self.args[0]
-        )
+        try:
+            return Magazine.objects.get(
+                issue_number=self.args[0]
+            )
+        except Magazine.DoesNotExist:
+            raise Http404
 
 class ArticleView(DetailView):
     def get_object(self):
-        return Article.objects.get(
-            magazine__issue_number=self.args[0],
-            slug=self.args[1]
-        )
+        try:
+            return Article.objects.get(
+                magazine__issue_number=self.args[0],
+                slug=self.args[1]
+            )
+        except Article.DoesNotExist:
+            raise Http404
 
 class SlugView(DetailView):
     def get_object(self):
-        return self.model.objects.get(slug=self.args[0])
+        try:
+            return self.model.objects.get(slug=self.args[0])
+        except self.model.DoesNotExist:
+            raise Http404
 
 class ContributorsView(TemplateView):
     template_name = 'contributors.html'

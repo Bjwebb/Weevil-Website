@@ -1,6 +1,6 @@
 # This files deals with the old site's urls and redirects them appropriately
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from weevil.models import Article
 
@@ -49,3 +49,4 @@ def redirect(request):
             article = Article.objects.get(legacy_id=id_)
             if article:
                 return HttpResponseRedirect(reverse('weevil.views.article', args=(article.magazine.issue_number, article.slug)))
+    raise Http404
