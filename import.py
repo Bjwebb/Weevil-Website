@@ -12,35 +12,10 @@ Contributor.objects.all().delete()
 Committee.objects.all().delete()
 FlatPage.objects.all().delete()
 
-cat = {
-    44: 1,
-    43: 2,
-    42: 3,
-    41: 4,
-    39: 5,
-    38: 6,
-    49: 7,
-    51: 8,
-    52: 9,
-    54: 10,
-    55: 11,
-    56: 12,
-    57: 13
-}
+from weevil.legacy import category_mapping as cat
+from weevil.legacy import flat_mapping as flat
+from weevil.legacy import committee_mapping as committees
 
-flat = {
-    169: '/committee/getting-involved/', 
-    272: '/committee/constitution/',
-    # /committee/contact/
-    177: '/supporters/',
-    178: '/supporters/cusu-reprographics/'
-}
-
-committees = {
-    168: 2013,
-    392: 2012,
-    274: 2011
-}
 
 def fixtext(text):
     return re.sub('"/?images/', '"http://www.weevilmagazine.co.uk/images/', text.decode('latin-1'))
@@ -80,7 +55,7 @@ for row in c:
     contributor = Contributor(name=name, slug=row[1], text=text)
     contributor.save()
 
-c.execute('SELECT catid, alias, title, introtext, created_by_alias FROM jos_content WHERE sectionid=9 AND state=1')
+c.execute('SELECT catid, alias, title, introtext, created_by_alias, id FROM jos_content WHERE sectionid=9 AND state=1')
 # TODO Deal with multiple authors
 created_re = re.compile('{ga=([^,&]*)(,?([^&,]*)&t)?}')
 for row in c:
@@ -96,7 +71,8 @@ for row in c:
             title=title,
             slug=row[1],
             text=text,
-            magazine=weevils[cat[int(row[0])]]
+            magazine=weevils[cat[int(row[0])]],
+            legacy_id=row[5]
         )
         m = created_re.match(row[4])
         if m:

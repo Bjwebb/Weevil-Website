@@ -27,6 +27,7 @@ class Article(Sortable):
     text = models.TextField(default='')
     author = models.ForeignKey(Contributor, related_name='articles_written', null=True, blank=True)
     illustrator = models.ForeignKey(Contributor, related_name='articles_illustrated', null=True, blank=True)
+    legacy_id = models.IntegerField(null=True, editable=False)
     
     magazine = SortableForeignKey(Magazine)
 
