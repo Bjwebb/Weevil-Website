@@ -55,7 +55,7 @@ for row in c:
     contributor = Contributor(name=name, slug=row[1], text=text)
     contributor.save()
 
-c.execute('SELECT catid, alias, title, introtext, created_by_alias, id FROM jos_content WHERE sectionid=9 AND state=1')
+c.execute('SELECT catid, alias, title, introtext, created_by_alias, id, ordering FROM jos_content WHERE sectionid=9 AND state=1 ORDER BY ordering')
 # TODO Deal with multiple authors
 created_re = re.compile('{ga=([^,&]*)(,?([^&,]*)&t)?}')
 for row in c:
