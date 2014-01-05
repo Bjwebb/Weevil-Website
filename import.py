@@ -1,6 +1,5 @@
-from django.core.management import setup_environ
-import weevil.settings
-setup_environ(weevil.settings)
+import os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'weevil.settings'
 from weevil.models import Magazine, Article, Contributor, Committee
 from django.contrib.flatpages.models import FlatPage
 
@@ -18,7 +17,7 @@ from weevil.legacy import committee_mapping as committees
 
 
 def fixtext(text):
-    return re.sub('"/?images/', '"http://www.weevilmagazine.co.uk/images/', text.decode('latin-1'))
+    return re.sub('"/?images/', '"http://www.weevilmagazine.co.uk/images/', text.decode('utf-8'))
 
 conn = MySQLdb.connect(host='127.0.0.1', user='root', passwd=getpass.getpass(), db='weevil') 
 c = conn.cursor()
@@ -50,8 +49,8 @@ for row in c:
 
 c.execute('SELECT catid, alias, title, introtext FROM jos_content WHERE sectionid=6 AND state=1')
 for row in c:
-    name = row[2].decode('latin-1')
-    text = row[3].decode('latin-1')
+    name = row[2].decode('utf-8')
+    text = row[3].decode('utf-8')
     contributor = Contributor(name=name, slug=row[1], text=text)
     contributor.save()
 
@@ -62,7 +61,7 @@ for row in c:
     if row[0] in cat:
         try:
             text = fixtext(row[3])
-            title = row[2].decode('latin-1')
+            title = row[2].decode('utf-8')
         except UnicodeDecodeError:
             print row[3]
             import sys
