@@ -3,8 +3,12 @@ from adminsortable.models import Sortable
 from adminsortable.fields import SortableForeignKey
 
 class Magazine(Sortable):
+    class Meta:
+        ordering = ['issue_number']
+
     issue_number = models.IntegerField()
     text = models.TextField(default='')
+    cover = models.ImageField(upload_to='cover', null=True)
     
     published = models.DateTimeField(null=True, blank=True)
 

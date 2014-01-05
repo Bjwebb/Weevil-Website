@@ -1,4 +1,5 @@
 *.pyc
 *.swp
-*.sass-cache
-css
+config.py
+pyenv
+*.sql*

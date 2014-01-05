@@ -4,8 +4,10 @@ django-axes
 django-admin-sortable
 psycopg2
 south
-dj-database-url
-gunicorn
-dj-static
+pillow
 
+# Required for heroku only
+#dj-database-url
+#gunicorn
+#dj-static
 

@@ -28,6 +28,8 @@ import settings
 if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^404/$', TemplateView.as_view(template_name='404.html')),
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve',
+            {'document_root': 'media/'}),
     )
 
 urlpatterns += patterns('django.contrib.flatpages.views',

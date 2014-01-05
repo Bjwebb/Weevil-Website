@@ -30,7 +30,7 @@
 <div id="magazinesScrollable">
     {% for magazine in magazines %}
     <a href="{% url 'magazine' magazine.issue_number %}">
-        <img src="{% cycle 'http://www.weevilmagazine.co.uk/images/stories/weevil_13_cover_web.jpg' 'http://www.weevilmagazine.co.uk/images/stories/issue12images/weevil_12_final_cover_for%20web.png' %}" height="200px" />
+        <img src="{% if magazine.cover %}{{magazine.cover.url}}{%endif%}" height="200px" />
     </a>
     {% endfor %}
 </div>
