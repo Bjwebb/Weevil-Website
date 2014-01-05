@@ -20,6 +20,8 @@ class Contributor(models.Model):
     slug = models.SlugField()
     text = models.TextField(default='')
 
+    legacy_is_illustractor = models.BooleanField(default=False)
+
     def __unicode__(self):
         return self.name
 

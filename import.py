@@ -52,11 +52,13 @@ for row in c:
     name = row[2].decode('utf-8')
     text = row[3].decode('utf-8')
     contributor = Contributor(name=name, slug=row[1], text=text)
+    if row[0] == 40:
+        contributor.legacy_is_illustractor = True
     contributor.save()
 
 c.execute('SELECT catid, alias, title, introtext, created_by_alias, id, ordering FROM jos_content WHERE sectionid=9 AND state=1 ORDER BY ordering')
 # TODO Deal with multiple authors
-created_re = re.compile('{ga=([^,&]*)(,?([^&,]*)&t)?}')
+created_re = re.compile('{ga=([^}&]*)')
 for row in c:
     if row[0] in cat:
         try:
@@ -75,8 +77,10 @@ for row in c:
         )
         m = created_re.match(row[4])
         if m:
-            if m.group(1):
-                article.author = Contributor.objects.get(slug=m.group(1))
-            if m.group(3):
-                article.illustrator = Contributor.objects.get(slug=m.group(3))
-        article.save()
+            for slug in m.group(1).split(','):
+                contributor = Contributor.objects.get(slug=slug)
+                if contributor.legacy_is_illustractor:
+                    article.illustrator = contributor
+                else:
+                    article.author = contributor
+            article.save()
