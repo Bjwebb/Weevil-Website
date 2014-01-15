@@ -54,9 +54,11 @@
 </tr>
 </tbody></table></div></div>
 <div id="rightcolumn"><div class="module"><div><div><div><h3>Latest Weevil</h3><div class="mod_placehere"><div style="overflow:hidden;" class="mod_placehere_leading even"><p class="buttonheading"></p><a href="/index.php?option=com_content&amp;view=category&amp;id=57&amp;Itemid=97"><img src="/images/stories/weevil_13_cover_web.jpg" width="200px"></a> <a name="spacer">&nbsp;</a></div></div></div></div></div></div><div class="module"><div><div><div><h3>Latest News</h3>
-{% comment %}
-<table class="gk_news_show_table" id="newsshow1"><tbody><tr valign="top" class="gk_news_show_tablerow"><td style="width: 100%;padding: 0px;" class="gk_news_show_center"><div class="gk_round"><div><div><div class="clearfix"><h4 class="gk_news_show_news_header ta_left"><a href="/index.php?option=com_content&amp;view=article&amp;id=372:keen-to-write-now-is-your-chance&amp;catid=1:latest-news&amp;Itemid=53" rel="nofollow">Keen to write? Now is your chance!</a></h4><p class="gk_news_show_news_info ta_left">Thursday, 14 February 2013</p></div></div></div></div></td></tr><tr valign="top" class="gk_news_show_tablerow"><td style="width: 100%;padding: 0px;" class="gk_news_show_center"><div class="gk_round"><div><div><div class="clearfix"><h4 class="gk_news_show_news_header ta_left"><a href="/index.php?option=com_content&amp;view=article&amp;id=371:media-careers-event&amp;catid=1:latest-news&amp;Itemid=53" rel="nofollow">Media Careers Event</a></h4><p class="gk_news_show_news_info ta_left">Tuesday, 12 February 2013</p></div></div></div></div></td></tr><tr valign="top" class="gk_news_show_tablerow"><td style="width: 100%;padding: 0px;" class="gk_news_show_center"><div class="gk_round"><div><div><div class="clearfix"><h4 class="gk_news_show_news_header ta_left"><a href="/index.php?option=com_content&amp;view=article&amp;id=245:election-results-are-in&amp;catid=1:latest-news&amp;Itemid=53" rel="nofollow">Election Results are in!</a></h4><p class="gk_news_show_news_info ta_left">Sunday, 13 March 2011</p></div></div></div></div></td></tr></tbody></table>
-{% endcomment %}
+<table class="gk_news_show_table" id="newsshow1"><tbody>
+{% for article in recent_news %}
+<tr valign="top" class="gk_news_show_tablerow"><td style="width: 100%;padding: 0px;" class="gk_news_show_center"><div class="gk_round"><div><div><div class="clearfix"><h4 class="gk_news_show_news_header ta_left"><a href="{% url 'news' %}" rel="nofollow">{{article.title}}</a></h4><p class="gk_news_show_news_info ta_left">{{article.created|date:"l, j F Y"}}</p></div></div></div></div></td></tr>
+{% endfor %}
+</tbody></table>
 </div></div></div></div>
 </div><div class="clr"></div></div></div></div></div>
 {% endblock %}

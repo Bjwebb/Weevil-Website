@@ -44,6 +44,8 @@ class Article(Sortable):
         return self.title
 
 class News(models.Model):
+    class Meta:
+        ordering = ['-created','-updated']
     title = models.CharField(max_length=255, default='')
     slug = models.SlugField(max_length=100)
     text = models.TextField(default='')

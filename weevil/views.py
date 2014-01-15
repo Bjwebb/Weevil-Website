@@ -9,6 +9,7 @@ class HomeView(TemplateView):
         return {
             'magazines': Magazine.objects.all(),
             'random_articles': Article.objects.order_by('?')[0:6],
+            'recent_news': News.objects.all()[:3]
         }
 
 class MagazineView(DetailView):

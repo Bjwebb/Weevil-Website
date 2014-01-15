@@ -1,6 +1,6 @@
 import os
 os.environ['DJANGO_SETTINGS_MODULE'] = 'weevil.settings'
-from weevil.models import Magazine, Article, Contributor, Committee
+from weevil.models import Magazine, Article, Contributor, Committee, News
 from django.contrib.flatpages.models import FlatPage
 
 import MySQLdb, getpass, re
@@ -10,6 +10,7 @@ Article.objects.all().delete()
 Contributor.objects.all().delete()
 Committee.objects.all().delete()
 FlatPage.objects.all().delete()
+News.objects.all().delete()
 
 from weevil.legacy import category_mapping as cat
 from weevil.legacy import flat_mapping as flat
@@ -83,4 +84,22 @@ for row in c:
                     article.illustrator = contributor
                 else:
                     article.author = contributor
-            article.save()
+        article.save()
+
+
+
+c.execute('SELECT catid, alias, title, introtext, created_by_alias, id, ordering, publish_up FROM jos_content WHERE sectionid=1 AND state=1 AND catid=1 ORDER BY ordering')
+for row in c:
+    news = News(
+        title=row[2].decode('utf-8'),
+        slug=row[1],
+        text=fixtext(row[3])
+    )
+    for field in news._meta.local_fields:
+        if field.name == 'created':
+            field.auto_now_add = False
+    news.created=row[7]
+    news.save()
+    for field in news._meta.local_fields:
+        if field.name == 'created':
+            field.auto_now_add = True
