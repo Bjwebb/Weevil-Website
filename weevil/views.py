@@ -8,6 +8,7 @@ class HomeView(TemplateView):
     def get_context_data(self):
         return {
             'magazines': Magazine.objects.all(),
+            'latest_magazine': Magazine.objects.order_by('-issue_number')[0],
             'random_articles': Article.objects.order_by('?')[0:6],
             'recent_news': News.objects.all()[:3]
         }

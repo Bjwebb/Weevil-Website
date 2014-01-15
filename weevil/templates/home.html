@@ -53,7 +53,7 @@
 {% endfor %}
 </tr>
 </tbody></table></div></div>
-<div id="rightcolumn"><div class="module"><div><div><div><h3>Latest Weevil</h3><div class="mod_placehere"><div style="overflow:hidden;" class="mod_placehere_leading even"><p class="buttonheading"></p><a href="/index.php?option=com_content&amp;view=category&amp;id=57&amp;Itemid=97"><img src="/images/stories/weevil_13_cover_web.jpg" width="200px"></a> <a name="spacer">&nbsp;</a></div></div></div></div></div></div><div class="module"><div><div><div><h3>Latest News</h3>
+<div id="rightcolumn"><div class="module"><div><div><div><h3>Latest Weevil</h3><div class="mod_placehere"><div style="overflow:hidden;" class="mod_placehere_leading even"><p class="buttonheading"></p><a href="{% url 'magazine' latest_magazine.issue_number %}"><img src="{{latest_magazine.cover.url}}" width="200px"></a> <a name="spacer">&nbsp;</a></div></div></div></div></div></div><div class="module"><div><div><div><h3>Latest News</h3>
 <table class="gk_news_show_table" id="newsshow1"><tbody>
 {% for article in recent_news %}
 <tr valign="top" class="gk_news_show_tablerow"><td style="width: 100%;padding: 0px;" class="gk_news_show_center"><div class="gk_round"><div><div><div class="clearfix"><h4 class="gk_news_show_news_header ta_left"><a href="{% url 'news' %}" rel="nofollow">{{article.title}}</a></h4><p class="gk_news_show_news_info ta_left">{{article.created|date:"l, j F Y"}}</p></div></div></div></div></td></tr>

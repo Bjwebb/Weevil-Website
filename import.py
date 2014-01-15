@@ -16,6 +16,24 @@ from weevil.legacy import category_mapping as cat
 from weevil.legacy import flat_mapping as flat
 from weevil.legacy import committee_mapping as committees
 
+covers = {
+     1: 'cover/issue{0}.png',
+     2: 'cover/issue{0}.png',
+     3: 'cover/issue{0}.png',
+     4: 'cover/issue{0}.png',
+     5: 'cover/issue{0}.png',
+     6: 'cover/issue{0}.png',
+     7: 'cover/issue{0}.jpg',
+     8: 'cover/issue{0}.jpg',
+     9: 'cover/issue{0}.jpg',
+    10: 'cover/issue{0}.jpg',
+    11: 'cover/issue{0}.jpg',
+    12: 'cover/issue{0}.png',
+    13: 'cover/issue{0}.jpg',
+    14: 'cover/issue{0}.jpg',
+    15: 'cover/issue{0}.jpg',
+    16: 'cover/issue{0}.jpg',
+}
 
 def fixtext(text):
     return re.sub('"/?images/', '"http://www.weevilmagazine.co.uk/images/', text.decode('utf-8'))
@@ -45,6 +63,7 @@ for row in c:
         i = cat[row[0]]
         weevil = Magazine(issue_number=i)
         weevil.text = fixtext(row[1])
+        weevil.cover = covers[i].format(i)
         weevils[i] = weevil
         weevil.save()
 
@@ -52,6 +71,8 @@ c.execute('SELECT catid, alias, title, introtext FROM jos_content WHERE sectioni
 for row in c:
     name = row[2].decode('utf-8')
     text = row[3].decode('utf-8')
+    if Contributor.objects.filter(slug=row[1]).count() > 0:
+        continue
     contributor = Contributor(name=name, slug=row[1], text=text)
     if row[0] == 40:
         contributor.legacy_is_illustractor = True
