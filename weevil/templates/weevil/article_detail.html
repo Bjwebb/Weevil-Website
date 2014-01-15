@@ -23,7 +23,11 @@
 
 <span class="small">
     Written by
-    <a href="{% url 'contributor' article.author.slug %}">{{article.author.name}}</a>
+    <a href="{% url 'contributor' article.author.slug %}">{{article.author.name}}</a>.
+    {% if article.illustrator %}
+    Illustrated by
+    <a href="{% url 'contributor' article.author.slug %}">{{article.illustrator.name}}</a>.
+    {% endif %}
 </span>
 
 </td></tr><tr><td>

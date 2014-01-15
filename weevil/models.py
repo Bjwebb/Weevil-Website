@@ -16,6 +16,9 @@ class Magazine(Sortable):
         return 'Weevil #'+str(self.issue_number)
 
 class Contributor(models.Model):
+    class Meta:
+        ordering = ['name']
+
     name = models.CharField(max_length=255)
     slug = models.SlugField()
     text = models.TextField(default='')

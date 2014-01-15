@@ -11,4 +11,19 @@
 {{contributor.text|safe}}
 
 </tr></td></table>
+
+<span class="article_separator">&nbsp;</span>
+<div class="links"><h4>{{contributor.name}}'s contributions :</h4>
+
+<ul>
+{% for article in contributor.articles_written.all %}
+    <li><a href="{% url 'article' article.magazine.issue_number article.slug %}">{{article.title}}</a></li>
+{% endfor %}
+{% for article in contributor.articles_illustrated.all %}
+    <li><a href="{% url 'article' article.magazine.issue_number article.slug %}">{{article.title}}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+
 {% endblock %}
